@@ -1,0 +1,35 @@
+{
+    "name": "thytanium/eloquent-positionable",
+    "description": "Use a position property to sort Eloquent models",
+    "type": "library",
+    "require": {
+        "illuminate/database": ">=6.0",
+        "illuminate/support": ">=6.0"
+    },
+    "require-dev": {
+        "laravel/laravel": ">=6.0",
+        "mockery/mockery": "^1.4",
+        "phpunit/phpunit": "^9.5"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Thytanium\\EloquentPositionable\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Alejandro González",
+            "email": "thytanium@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "scripts": {
+        "test": "vendor/bin/phpunit --testdox"
+    }
+}

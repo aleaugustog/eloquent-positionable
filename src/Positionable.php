@@ -3,12 +3,10 @@
 namespace Thytanium\EloquentPositionable;
 
 use Illuminate\Database\Eloquent\Model;
-use Thytanium\EloquentPositionable\Concerns\Moves;
-use Thytanium\EloquentPositionable\Concerns\Queries;
 
 trait Positionable
 {
-    use Moves, Queries;
+    use Concerns\Moves, Concerns\Queries;
 
     /**
      * Boot the trait.
@@ -30,7 +28,7 @@ trait Positionable
      *
      * @return string
      */
-    protected function getPositionColumn(): string
+    public function getPositionColumn(): string
     {
         return $this->positionColumn ?? 'position';
     }
@@ -41,7 +39,7 @@ trait Positionable
      *
      * @return int
      */
-    protected function getPositionStart(): int
+    public function getPositionStart(): int
     {
         return $this->positionStart ?? 1;
     }

@@ -6,6 +6,13 @@ use Illuminate\Support\Facades\DB;
 
 trait Moves
 {
+    /**
+     * Moves the model a specific number of positions.
+     *
+     * @param int $step
+     *
+     * @return $this
+     */
     public function moveStep(int $step): self
     {
         // calculate target position
@@ -20,8 +27,6 @@ trait Moves
 
             $this->setFinalPosition($target);
         });
-
-        static::clearCurrentPosition();
 
         return $this;
     }
@@ -64,18 +69,50 @@ trait Moves
         return [$lower, $upper];
     }
 
-    protected function moveIntermediatePositions(int $target, int $current, bool $goingUp): void
-    {
-        $this->setTemporaryPosition();
-
+    /**
+     * Move intermediate positions to make space for new positions.
+     *
+     * @param int $target
+     * @param int $current
+     * @param bool $goingUp
+     *
+     * @return int
+     */
+    protected function moveIntermediatePositions(
+        int $target,
+        int $current,
+        bool $goingUp
+    ): int {
         $operator = $goingUp ? '+' : '-';
 
-        static::positionBetween(
-                $this->getPositionThresholds($target, $current, $goingUp),
-            )
+        return $this->updateBetweenPositions(
+            $this->getPositionThresholds($target, $current, $goingUp),
+            $operator,
+        );
+    }
+
+    /**
+     * Run update query for models between specific positions.
+     *
+     * @param array $between
+     * @param string $operator
+     *
+     * @return int
+     */
+    protected function updateBetweenPositions(
+        array $between,
+        string $operator
+    ): int {
+        $this->setTemporaryPosition();
+
+        $column = static::query()
+            ->getGrammar()
+            ->wrap($this->getPositionColumn());
+
+        return static::positionBetween($between)
             ->update([
                 $this->getPositionColumn() => DB::raw(
-                    "{$this->getPositionColumn()} {$operator} 1",
+                    "{$column} {$operator} 1",
                 ),
             ]);
     }

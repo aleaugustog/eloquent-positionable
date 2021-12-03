@@ -25,6 +25,24 @@ trait Queries
     }
 
     /**
+     * Sorts queruy by position.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string|null                           $order
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeSortByPosition(
+        Builder $query,
+        ?string $order = 'asc'
+    ): Builder {
+        return $query->orderBy(
+            $this->getPositionColumn(),
+            $order,
+        );
+    }
+
+    /**
      * Get current position.
      *
      * @return int

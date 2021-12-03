@@ -10,6 +10,7 @@ class Model extends BaseModel
     use Positionable;
 
     protected $table = 'positionables';
+    public $fillable = ['index'];
 
     public $positionColumn = 'index';
     public $positionStart = 0;

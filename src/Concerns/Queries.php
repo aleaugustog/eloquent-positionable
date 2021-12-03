@@ -24,11 +24,21 @@ trait Queries
         );
     }
 
+    /**
+     * Get current position.
+     *
+     * @return int
+     */
     public function getPosition(): ?int
     {
         return $this->getAttribute($this->getPositionColumn());
     }
 
+    /**
+     * Set current position.
+     *
+     * @return $this
+     */
     public function setPosition(int $position): self
     {
         $this->{$this->getPositionColumn()} = $position;
@@ -36,6 +46,13 @@ trait Queries
         return $this;
     }
 
+    /**
+     * Returns true when a given position is taken.
+     *
+     * @param int $position
+     *
+     * @return bool
+     */
     public static function isPositionTaken(int $position): bool
     {
         return static::getPositionQuery()
@@ -45,7 +62,7 @@ trait Queries
 
     /**
      * Get max position.
-     * If max position is null then `positionStart` - 1 will be returned.
+     * If max position is null then `positionStart - 1` will be returned.
      *
      * @return int
      */
@@ -57,6 +74,11 @@ trait Queries
                 ?? $model->getPositionStart() - 1;
     }
 
+    /**
+     * Base query.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
     protected static function getPositionQuery(): Builder
     {
         return static::query();

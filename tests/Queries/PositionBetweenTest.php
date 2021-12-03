@@ -10,6 +10,11 @@ class PositionBetweenTest extends TestCase
 {
     use DatabaseMigrations;
 
+    /**
+     * It queries models between 2 positions.
+     *
+     * @return void
+     */
     public function test_it_queries_models_between_positions(): void
     {
         static::createModel(3);

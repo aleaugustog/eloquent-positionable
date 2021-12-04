@@ -3,6 +3,7 @@
 namespace Tests\Moves;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\MapsModels;
 use Tests\TestCase;
 
 class MoveToStartTest extends TestCase

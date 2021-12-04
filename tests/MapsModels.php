@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Moves;
+namespace Tests;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;

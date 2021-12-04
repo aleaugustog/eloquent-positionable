@@ -1,21 +1,21 @@
 <?php
 
-namespace Tests\Moves;
+namespace Tests\Swaps;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\MapsModels;
 use Tests\TestCase;
 
-class MoveToTest extends TestCase
+class SwapPositionsTest extends TestCase
 {
     use DatabaseMigrations, MapsModels;
 
     /**
-     * It moves a model to a higher position.
+     * It swaps positions by passing a position number.
      *
      * @return void
      */
-    public function test_it_moves_up(): void
+    public function test_it_swaps_positions_with_position_number(): void
     {
         $models = static::createModel(3);
 
@@ -24,21 +24,21 @@ class MoveToTest extends TestCase
             $this->mapPosition($models)->toArray(),
         );
 
-        // move last item to first position
-        $models[2]->moveTo(0);
+        // swap positions between first and last model
+        $models[2]->swapPositions(0);
 
         $this->assertEquals(
-            [1, 2, 0],
+            [2, 1, 0],
             $this->mapPosition($models, true)->toArray(),
         );
     }
 
     /**
-     * It moves a model to a higher position.
+     * It swaps positions by passing another model.
      *
      * @return void
      */
-    public function test_it_moves_down(): void
+    public function test_it_swaps_positions_with_model(): void
     {
         $models = static::createModel(3);
 
@@ -47,11 +47,11 @@ class MoveToTest extends TestCase
             $this->mapPosition($models)->toArray(),
         );
 
-        // move last item to last position
-        $models[0]->moveTo(2);
+        // swap positions between first and last model
+        $models[2]->swapPositions($models[0]);
 
         $this->assertEquals(
-            [2, 0, 1],
+            [2, 1, 0],
             $this->mapPosition($models, true)->toArray(),
         );
     }

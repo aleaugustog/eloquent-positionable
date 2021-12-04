@@ -17,7 +17,7 @@ trait Swaps
     {
         if (is_int($target)) {
             // find the model occupying the target position
-            $target = self::where($this->getPositionColumn(), $target)->first();
+            $target = self::position($target)->first();
         }
 
         DB::transaction(function () use ($target) {

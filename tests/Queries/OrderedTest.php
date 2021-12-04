@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 use Thytanium\EloquentPositionable\Dummy\Model;
 
-class SortByPositionTest extends TestCase
+class OrderedTest extends TestCase
 {
     use DatabaseMigrations;
 
@@ -19,7 +19,7 @@ class SortByPositionTest extends TestCase
     {
         static::createModel(3, [2, 0, 1]);
 
-        Model::sortByPosition('asc')
+        Model::ordered('asc')
             ->get()
             ->each(fn ($model, $index) => $this->assertEquals(
                 $index,

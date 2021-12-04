@@ -7,6 +7,22 @@ use Illuminate\Database\Eloquent\Builder;
 trait Queries
 {
     /**
+     * Query models with specific position.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param int                                   $position
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePosition(Builder $query, int $position): Builder
+    {
+        return $query->where(
+            $this->getPositionColumn(),
+            $position,
+        );
+    }
+
+    /**
      * Query models with positions between two values.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
@@ -25,14 +41,14 @@ trait Queries
     }
 
     /**
-     * Sorts queruy by position.
+     * Sorts query by position.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @param string|null                           $order
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeSortByPosition(
+    public function scopeOrdered(
         Builder $query,
         ?string $order = 'asc'
     ): Builder {

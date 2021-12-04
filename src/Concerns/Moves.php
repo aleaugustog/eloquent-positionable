@@ -41,7 +41,7 @@ trait Moves
     public function moveToEnd(): static
     {
         return $this->moveTo(
-            static::maxPosition(),
+            $this->maxPosition(),
         );
     }
 
@@ -60,7 +60,7 @@ trait Moves
         DB::transaction(function () use ($current, $goingUp, $target) {
             // move intermediate models from their positions
             // when the target position is taken
-            if (static::isPositionTaken($target)) {
+            if ($this->isPositionTaken($target)) {
                 $this->moveIntermediatePositions($target, $current, $goingUp);
             }
 
@@ -100,7 +100,7 @@ trait Moves
      */
     protected function setTemporaryPosition(): void
     {
-        $this->setPosition(static::maxPosition() + 1);
+        $this->setPosition($this->maxPosition() + 1);
         $this->save();
     }
 
@@ -178,7 +178,8 @@ trait Moves
 
         $incrementing = $operation === 'increment';
 
-        return static::withoutGlobalScope(SoftDeletingScope::class)
+        return $this->getPositionQuery()
+            ->withoutGlobalScope(SoftDeletingScope::class)
             ->positionBetween($between)
             ->{$operation}($this->getPositionColumn());
     }

@@ -50,7 +50,7 @@ trait Queries
      */
     public function scopeOrdered(
         Builder $query,
-        ?string $order = 'asc'
+        string $order = 'asc'
     ): Builder {
         return $query->orderBy(
             $this->getPositionColumn(),
@@ -81,31 +81,29 @@ trait Queries
     }
 
     /**
+     * Get max position.
+     * If max position is null then `positionStart - 1` will be returned.
+     *
+     * @return int
+     */
+    public function maxPosition(): int
+    {
+        return $this->getPositionQuery()->max($this->getPositionColumn())
+                ?? $this->getPositionStart() - 1;
+    }
+
+    /**
      * Returns true when a given position is taken.
      *
      * @param int $position
      *
      * @return bool
      */
-    public static function isPositionTaken(int $position): bool
+    protected function isPositionTaken(int $position): bool
     {
-        return static::getPositionQuery()
+        return $this->getPositionQuery()
             ->where((new static)->getPositionColumn(), $position)
             ->count() !== 0;
-    }
-
-    /**
-     * Get max position.
-     * If max position is null then `positionStart - 1` will be returned.
-     *
-     * @return int
-     */
-    public static function maxPosition(): int
-    {
-        $model = new static;
-        return static::query()
-            ->max($model->getPositionColumn())
-                ?? $model->getPositionStart() - 1;
     }
 
     /**
@@ -113,8 +111,18 @@ trait Queries
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    protected static function getPositionQuery(): Builder
+    protected function getPositionQuery(): Builder
     {
-        return static::query();
+        return self::query()->when(
+            count($this->getPositionGroups()) > 0,
+            function ($query) {
+                foreach ($this->getPositionGroups() as $column) {
+                    $query->where(
+                        $column,
+                        $this->getAttribute($column),
+                    );
+                }
+            },
+        );
     }
 }

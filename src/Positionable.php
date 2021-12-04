@@ -17,7 +17,7 @@ trait Positionable
     {
         static::saving(function (Model $model) {
             if ($model->getPosition() === null) {
-                $model->setPosition(static::maxPosition() + 1);
+                $model->setPosition($model->maxPosition() + 1);
             }
         });
     }
@@ -42,5 +42,15 @@ trait Positionable
     public function getPositionStart(): int
     {
         return $this->positionable['start'] ?? 1;
+    }
+
+    /**
+     * Get position group columns.
+     *
+     * @return array
+     */
+    public function getPositionGroups(): array
+    {
+        return $this->positionable['groups'] ?? [];
     }
 }

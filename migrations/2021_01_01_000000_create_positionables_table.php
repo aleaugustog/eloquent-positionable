@@ -10,7 +10,7 @@ class CreatePositionablesTable extends Migration
     {
         Schema::create('positionables', function (Blueprint $table) {
             $table->increments('id');
-            $table->tinyInteger('index');
+            $table->tinyInteger('index')->index();
             $table->timestamps();
         });
     }

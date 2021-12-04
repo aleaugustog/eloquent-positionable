@@ -30,7 +30,7 @@ trait Positionable
      */
     public function getPositionColumn(): string
     {
-        return $this->positionColumn ?? 'position';
+        return $this->positionable['column'] ?? 'position';
     }
 
     /**
@@ -41,6 +41,6 @@ trait Positionable
      */
     public function getPositionStart(): int
     {
-        return $this->positionStart ?? 1;
+        return $this->positionable['start'] ?? 1;
     }
 }

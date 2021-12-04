@@ -57,7 +57,7 @@ trait Queries
      *
      * @return $this
      */
-    public function setPosition(int $position): self
+    public function setPosition(int $position): static
     {
         $this->{$this->getPositionColumn()} = $position;
 

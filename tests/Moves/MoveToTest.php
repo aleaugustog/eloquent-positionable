@@ -5,12 +5,12 @@ namespace Tests\Moves;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
-class MoveStepTest extends TestCase
+class MoveToTest extends TestCase
 {
     use DatabaseMigrations, MapsModels;
 
     /**
-     * It moves a model up.
+     * It moves a model to a higher position.
      *
      * @return void
      */
@@ -23,8 +23,8 @@ class MoveStepTest extends TestCase
             $this->mapPosition($models)->toArray(),
         );
 
-        // move last item 2 places up
-        $models[2]->moveStep(-2);
+        // move last item to first position
+        $models[2]->moveTo(0);
 
         $this->assertEquals(
             [1, 2, 0],
@@ -33,7 +33,7 @@ class MoveStepTest extends TestCase
     }
 
     /**
-     * It moves a model down.
+     * It moves a model to a higher position.
      *
      * @return void
      */
@@ -46,8 +46,8 @@ class MoveStepTest extends TestCase
             $this->mapPosition($models)->toArray(),
         );
 
-        // move first item to last position
-        $models[0]->moveStep(2);
+        // move last item to last position
+        $models[0]->moveTo(2);
 
         $this->assertEquals(
             [2, 0, 1],

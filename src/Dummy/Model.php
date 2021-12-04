@@ -12,6 +12,8 @@ class Model extends BaseModel
     protected $table = 'positionables';
     public $fillable = ['index'];
 
-    public $positionColumn = 'index';
-    public $positionStart = 0;
+    protected $positionable = [
+        'column' => 'index',
+        'start' => 0,
+    ];
 }

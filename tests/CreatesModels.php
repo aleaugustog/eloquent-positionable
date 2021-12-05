@@ -53,14 +53,16 @@ trait CreatesModels
 
         return collect(array_fill(0, $qty, null))->map(
             function ($nil, $index) use ($type, $positions) {
-                return GroupedModel::create([
-                    'type' => $type[$index],
-                    ...count($positions) ? [
-                        (new GroupedModel())->getPositionColumn() => $positions[
-                            $index
-                        ],
-                    ] : [],
-                    ]);
+                return GroupedModel::create(
+                    array_merge(
+                        ['type' => $type[$index]],
+                        count($positions)
+                            ? [
+                                (new GroupedModel())->getPositionColumn() =>
+                                    $positions[$index],
+                            ] : []
+                    ),
+                );
             }
         );
     }

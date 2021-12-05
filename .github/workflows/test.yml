@@ -61,7 +61,7 @@ jobs:
             - name: Install Dependencies
               run: composer install --ignore-platform-reqs -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
             - name: Downgrade Laravel to v7
-              run: composer require --dev laravel/laravel "^7.0.0"
+              run: composer require --dev --with-all-dependencies laravel/laravel "^7.0.0"
             - name: Execute tests
               run: composer test
 

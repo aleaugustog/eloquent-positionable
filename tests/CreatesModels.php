@@ -24,11 +24,13 @@ trait CreatesModels
         }
 
         return collect(array_fill(0, $qty, null))
-            ->map(fn ($nil, $index) => Model::create(
-                count($positions)
-                    ? [(new Model)->getPositionColumn() => $positions[$index]]
-                    : [],
-            ));
+            ->map(function ($nil, $index) use ($positions) {
+                return Model::create(
+                    count($positions)
+                        ? [(new Model)->getPositionColumn() => $positions[$index]]
+                        : [],
+                );
+            });
     }
 
     /**
@@ -50,14 +52,16 @@ trait CreatesModels
         }
 
         return collect(array_fill(0, $qty, null))->map(
-            fn($nil, $index) => GroupedModel::create([
-                'type' => $type[$index],
-                ...count($positions) ? [
-                    (new GroupedModel())->getPositionColumn() => $positions[
-                        $index
-                    ],
-                ] : [],
-            ])
+            function ($nil, $index) use ($type, $positions) {
+                return GroupedModel::create([
+                    'type' => $type[$index],
+                    ...count($positions) ? [
+                        (new GroupedModel())->getPositionColumn() => $positions[
+                            $index
+                        ],
+                    ] : [],
+                    ]);
+            }
         );
     }
 }

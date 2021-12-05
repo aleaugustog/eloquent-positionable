@@ -21,9 +21,11 @@ class OrderedTest extends TestCase
 
         Model::ordered('asc')
             ->get()
-            ->each(fn ($model, $index) => $this->assertEquals(
-                $index,
-                $model->getPosition(),
-            ));
+            ->each(function ($model, $index) {
+                $this->assertEquals(
+                    $index,
+                    $model->getPosition(),
+                );
+            });
     }
 }

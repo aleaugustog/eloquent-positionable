@@ -14,7 +14,7 @@ trait Moves
      *
      * @return $this
      */
-    public function moveTo(int $target): static
+    public function moveTo(int $target): self
     {
         return $this->moveStep(
             $target - $this->getPosition(),
@@ -26,7 +26,7 @@ trait Moves
      *
      * @return $this
      */
-    public function moveToStart(): static
+    public function moveToStart(): self
     {
         return $this->moveTo(
             $this->getPositionStart(),
@@ -38,7 +38,7 @@ trait Moves
      *
      * @return $this
      */
-    public function moveToEnd(): static
+    public function moveToEnd(): self
     {
         return $this->moveTo(
             $this->maxPosition(),
@@ -52,7 +52,7 @@ trait Moves
      *
      * @return $this
      */
-    public function moveStep(int $step): static
+    public function moveStep(int $step): self
     {
         // calculate target position
         [$target, $current, $goingUp] = $this->getTargetPosition($step);
@@ -111,7 +111,7 @@ trait Moves
      *
      * @return $this
      */
-    protected function setPositionAndSave(int $position): static
+    protected function setPositionAndSave(int $position): self
     {
         $this->setPosition($position);
         $this->save();

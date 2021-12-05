@@ -13,7 +13,7 @@ trait Swaps
      *
      * @return $this
      */
-    public function swapPositions(mixed $target): static
+    public function swapPositions(mixed $target): self
     {
         if (is_int($target)) {
             // find the model occupying the target position

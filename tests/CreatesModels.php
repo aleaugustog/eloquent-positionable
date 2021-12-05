@@ -18,7 +18,7 @@ trait CreatesModels
     public static function createModel(
         int $qty = 1,
         array $positions = []
-    ): mixed {
+    ): object {
         if ($qty === 1) {
             return Model::create();
         }
@@ -44,7 +44,7 @@ trait CreatesModels
         int $qty = 1,
         array $type = ['type A'],
         array $positions = []
-    ): mixed {
+    ): object {
         if ($qty === 1) {
             return GroupedModel::create(['type' => $type[0]]);
         }

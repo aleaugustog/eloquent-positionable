@@ -4,11 +4,11 @@ Use a property to sort Eloquent models.
 
 This is a zero-config package that provides a trait to handle positioning/sorting capabilities for Eloquent models.
 
-# Compatibility
+## Compatibility
 
 **PHP >= 7.3** and **Laravel >= 6.0**.
 
-# Installation
+## Installation
 
 This package can be installed through composer.
 
@@ -18,7 +18,7 @@ This package can be installed through composer.
 composer require thytanium/eloquent-positionable
 ```
 
-# Usage
+## Usage
 
 -   Add the trait `Thytanium\EloquentPositionable\Positionable` to your model.
 -   Optionally, specify the column name.
@@ -49,8 +49,8 @@ $myModel->save();
 $myModel->getPosition(); // by default will return 1, or the custom starting position
 ```
 
-# Groups
+## Groups
 
-# Caveats
+## Caveats
 
 > Do not add a `UNIQUE` index to the position column. This will be overcome in future releases.

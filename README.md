@@ -178,3 +178,23 @@ class MyModel extends Model
 ## Caveats
 
 > Although this trait makes sure the same position is not used by more than one model, do not add a `UNIQUE` index to the position column. This will be overcome in future releases.
+
+## Tests
+
+The package contains unit/integration tests set up with PHPUnit.
+
+```bash
+composer test
+```
+
+## Changelog
+
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+
+## Alternatives
+
+-   [spatie/eloquent-sortable](https://github.com/spatie/eloquent-sortable)
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE) for more information.

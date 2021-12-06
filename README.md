@@ -1,6 +1,10 @@
 # thytanium/eloquent-positionable
 
 ![Tests](https://github.com/thytanium/eloquent-positionable/actions/workflows/test.yml/badge.svg)
+[![Latest Stable Version](http://poser.pugx.org/thytanium/eloquent-positionable/v)](https://packagist.org/packages/thytanium/eloquent-positionable)
+[![Total Downloads](http://poser.pugx.org/thytanium/eloquent-positionable/downloads)](https://packagist.org/packages/thytanium/eloquent-positionable)
+[![PHP Version Require](http://poser.pugx.org/thytanium/eloquent-positionable/require/php)](https://packagist.org/packages/thytanium/eloquent-positionable)
+[![License](http://poser.pugx.org/thytanium/eloquent-positionable/license)](https://packagist.org/packages/thytanium/eloquent-positionable)
 
 Use a property to sort Eloquent models.
 

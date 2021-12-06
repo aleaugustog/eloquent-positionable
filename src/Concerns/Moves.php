@@ -46,6 +46,32 @@ trait Moves
     }
 
     /**
+     * Move the model N places up.
+     * By default it moves one place up.
+     *
+     * @param int|null $places
+     *
+     * @return $this
+     */
+    public function moveUp(?int $places = 1): self
+    {
+        return $this->moveStep(-1 * $places);
+    }
+
+    /**
+     * Move the model N places down.
+     * By default it moves one place down.
+     *
+     * @param int|null $places
+     *
+     * @return $this
+     */
+    public function moveDown(?int $places = 1): self
+    {
+        return $this->moveStep($places);
+    }
+
+    /**
      * Moves the model a desired number of positions.
      *
      * @param int $step
@@ -91,32 +117,6 @@ trait Moves
         }
 
         return [$target, $current, $step < 0];
-    }
-
-    /**
-     * Sets a temporary position equal to the max position + 1.
-     *
-     * @return void
-     */
-    protected function setTemporaryPosition(): void
-    {
-        $this->setPosition($this->maxPosition() + 1);
-        $this->save();
-    }
-
-    /**
-     * Sets a position value and saves the model.
-     *
-     * @param int $position Desired position
-     *
-     * @return $this
-     */
-    protected function setPositionAndSave(int $position): self
-    {
-        $this->setPosition($position);
-        $this->save();
-
-        return $this;
     }
 
     /**

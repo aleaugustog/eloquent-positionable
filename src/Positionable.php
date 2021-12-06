@@ -53,4 +53,30 @@ trait Positionable
     {
         return $this->positionable['groups'] ?? [];
     }
+
+    /**
+     * Sets a temporary position equal to the max position + 1.
+     *
+     * @return void
+     */
+    protected function setTemporaryPosition(): void
+    {
+        $this->setPosition($this->maxPosition() + 1);
+        $this->save();
+    }
+
+    /**
+     * Sets a position value and saves the model.
+     *
+     * @param int $position Desired position
+     *
+     * @return $this
+     */
+    protected function setPositionAndSave(int $position): self
+    {
+        $this->setPosition($position);
+        $this->save();
+
+        return $this;
+    }
 }

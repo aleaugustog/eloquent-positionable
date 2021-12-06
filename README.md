@@ -12,7 +12,7 @@ This is a zero-config package that provides a trait to handle positioning/sortin
 
 This package can be installed through composer.
 
-> Don't worry about service providers, this package doesn't expose service providers.
+> Don't worry about service providers. This package doesn't expose service providers.
 
 ```bash
 composer require thytanium/eloquent-positionable

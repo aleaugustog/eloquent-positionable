@@ -1,5 +1,7 @@
 # thytanium/eloquent-positionable
 
+![Tests](https://github.com/thytanium/eloquent-positionable/actions/workflows/test.yml/badge.svg)
+
 Use a property to sort Eloquent models.
 
 This is a zero-config package that provides a trait to handle positioning/sorting capabilities for Eloquent models.

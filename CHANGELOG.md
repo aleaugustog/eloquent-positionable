@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2021-12-07
+
+### Changed
+
+-   Fixed required PHP version property in composer.json
+
 ## [0.1.0] - 2021-12-06
 
 ### Added

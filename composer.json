@@ -3,7 +3,7 @@
     "description": "Use a position property to sort Eloquent models",
     "type": "library",
     "require": {
-        "php": ">=7.3",
+        "php": "^7.3|^8.0",
         "illuminate/database": ">=6.0",
         "illuminate/support": ">=6.0"
     },

@@ -183,7 +183,7 @@ class MyModel extends Model
 
 ## Caveats
 
-> Although this trait makes sure the same position is not used by more than one model, do not add a `UNIQUE` index to the position column. This will be overcome in future releases.
+Although this trait makes sure the same position is not used by more than one model, do not add a `UNIQUE` index to the position column. This will be overcome in future releases.
 
 ## Tests
 

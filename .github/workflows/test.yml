@@ -38,7 +38,7 @@ jobs:
               run: composer test
 
     test-php80-laravel9:
-        name: Test on PHP 8.1 and Laravel 9
+        name: Test on PHP 8.0 and Laravel 9
         runs-on: ubuntu-20.04
         steps:
             - uses: shivammathur/setup-php@v2

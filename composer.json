@@ -10,7 +10,7 @@
     "require-dev": {
         "laravel/laravel": ">=6.0",
         "mockery/mockery": "^1.4",
-        "phpunit/phpunit": "^9.4"
+        "phpunit/phpunit": ">=9.4"
     },
     "license": "MIT",
     "autoload": {

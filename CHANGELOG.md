@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2023-01-18
+
+### Added
+
+-   `setNewOrder` functionality
+
+### Changed
+
+-   Dropped support for PHP 7.3
+-   Dropped support for PHP 7.4
+-   Dropped support for Laravel v6
+-   Dropped support for Laravel v7
+
 ## [0.1.1] - 2021-12-07
 
 ### Changed

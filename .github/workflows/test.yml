@@ -8,7 +8,23 @@ on:
 
 jobs:
     test-php82-laravel9:
-        name: Test on PHP 8.2 and Laravel 8
+        name: Test on PHP 8.2 and Laravel 9
+        runs-on: ubuntu-20.04
+
+        steps:
+            - uses: shivammathur/setup-php@v2
+              with:
+                  php-version: "8.2"
+            - uses: actions/checkout@v2
+            - name: Install Dependencies
+              run: composer install --ignore-platform-reqs -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+            - name: Upgrade Laravel to v9
+              run: composer require --dev --with-all-dependencies laravel/laravel "^9.0.0"
+            - name: Execute tests
+              run: composer test
+
+    test-php81-laravel9:
+        name: Test on PHP 8.1 and Laravel 9
         runs-on: ubuntu-20.04
 
         steps:
@@ -55,8 +71,6 @@ jobs:
             - name: Execute tests
               run: composer test
 
-    # at the moment, Laravel 7.30.1 is not compatible with PHP 8.1
-
     test-php80-laravel8:
         name: Test on PHP 8.0 and Laravel 8
         runs-on: ubuntu-20.04
@@ -70,129 +84,5 @@ jobs:
               run: composer install --ignore-platform-reqs -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
             - name: Downgrade Laravel to v8
               run: composer require --dev --with-all-dependencies laravel/laravel "^8.0.0"
-            - name: Execute tests
-              run: composer test
-
-    test-php80-laravel7:
-        name: Test on PHP 8.0 and Laravel 7
-        runs-on: ubuntu-20.04
-
-        steps:
-            - uses: shivammathur/setup-php@v2
-              with:
-                  php-version: "8.0"
-            - uses: actions/checkout@v2
-            - name: Install Dependencies
-              run: composer install --ignore-platform-reqs -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-            - name: Downgrade Laravel to v7
-              run: composer require --dev --with-all-dependencies laravel/laravel "^7.0.0"
-            - name: Execute tests
-              run: composer test
-
-    test-php80-laravel6:
-        name: Test on PHP 8.0 and Laravel 6
-        runs-on: ubuntu-20.04
-
-        steps:
-            - uses: shivammathur/setup-php@v2
-              with:
-                  php-version: "8.0"
-            - uses: actions/checkout@v2
-            - name: Install Dependencies
-              run: composer install --ignore-platform-reqs -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-            - name: Downgrade Laravel to v6
-              run: composer require --dev --with-all-dependencies laravel/laravel "^6.0.0"
-            - name: Execute tests
-              run: composer test
-
-    test-php74-laravel8:
-        name: Test on PHP 7.4 and Laravel 8
-        runs-on: ubuntu-20.04
-
-        steps:
-            - uses: shivammathur/setup-php@v2
-              with:
-                  php-version: "7.4"
-            - uses: actions/checkout@v2
-            - name: Install Dependencies
-              run: composer install --ignore-platform-reqs -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-            - name: Execute tests
-              run: composer test
-
-    test-php74-laravel7:
-        name: Test on PHP 7.4 and Laravel 7
-        runs-on: ubuntu-20.04
-
-        steps:
-            - uses: shivammathur/setup-php@v2
-              with:
-                  php-version: "7.4"
-            - uses: actions/checkout@v2
-            - name: Install Dependencies
-              run: composer install --ignore-platform-reqs -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-            - name: Downgrade Laravel to v7
-              run: composer require --dev --with-all-dependencies laravel/laravel "^7.0.0"
-            - name: Execute tests
-              run: composer test
-
-    test-php74-laravel6:
-        name: Test on PHP 7.4 and Laravel 6
-        runs-on: ubuntu-20.04
-
-        steps:
-            - uses: shivammathur/setup-php@v2
-              with:
-                  php-version: "7.4"
-            - uses: actions/checkout@v2
-            - name: Install Dependencies
-              run: composer install --ignore-platform-reqs -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-            - name: Downgrade Laravel to v6
-              run: composer require --dev --with-all-dependencies laravel/laravel "^6.0.0"
-            - name: Execute tests
-              run: composer test
-
-    test-php73-laravel8:
-        name: Test on PHP 7.3 and Laravel 8
-        runs-on: ubuntu-20.04
-
-        steps:
-            - uses: shivammathur/setup-php@v2
-              with:
-                  php-version: "7.3"
-            - uses: actions/checkout@v2
-            - name: Install Dependencies
-              run: composer install --ignore-platform-reqs -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-            - name: Execute tests
-              run: composer test
-
-    test-php73-laravel7:
-        name: Test on PHP 7.3 and Laravel 7
-        runs-on: ubuntu-20.04
-
-        steps:
-            - uses: shivammathur/setup-php@v2
-              with:
-                  php-version: "7.3"
-            - uses: actions/checkout@v2
-            - name: Install Dependencies
-              run: composer install --ignore-platform-reqs -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-            - name: Downgrade Laravel to v7
-              run: composer require --dev --with-all-dependencies laravel/laravel "^7.0.0"
-            - name: Execute tests
-              run: composer test
-
-    test-php73-laravel6:
-        name: Test on PHP 7.3 and Laravel 6
-        runs-on: ubuntu-20.04
-
-        steps:
-            - uses: shivammathur/setup-php@v2
-              with:
-                  php-version: "7.3"
-            - uses: actions/checkout@v2
-            - name: Install Dependencies
-              run: composer install --ignore-platform-reqs -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-            - name: Downgrade Laravel to v6
-              run: composer require --dev --with-all-dependencies laravel/laravel "^6.0.0"
             - name: Execute tests
               run: composer test

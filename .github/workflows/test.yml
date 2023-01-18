@@ -10,7 +10,6 @@ jobs:
     test-php82-laravel9:
         name: Test on PHP 8.2 and Laravel 9
         runs-on: ubuntu-20.04
-
         steps:
             - uses: shivammathur/setup-php@v2
               with:
@@ -26,11 +25,25 @@ jobs:
     test-php81-laravel9:
         name: Test on PHP 8.1 and Laravel 9
         runs-on: ubuntu-20.04
-
         steps:
             - uses: shivammathur/setup-php@v2
               with:
-                  php-version: "8.2"
+                  php-version: "8.1"
+            - uses: actions/checkout@v2
+            - name: Install Dependencies
+              run: composer install --ignore-platform-reqs -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+            - name: Upgrade Laravel to v9
+              run: composer require --dev --with-all-dependencies laravel/laravel "^9.0.0"
+            - name: Execute tests
+              run: composer test
+
+    test-php80-laravel9:
+        name: Test on PHP 8.1 and Laravel 9
+        runs-on: ubuntu-20.04
+        steps:
+            - uses: shivammathur/setup-php@v2
+              with:
+                  php-version: "8.0"
             - uses: actions/checkout@v2
             - name: Install Dependencies
               run: composer install --ignore-platform-reqs -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
@@ -42,7 +55,6 @@ jobs:
     test-php82-laravel8:
         name: Test on PHP 8.2 and Laravel 8
         runs-on: ubuntu-20.04
-
         steps:
             - uses: shivammathur/setup-php@v2
               with:
@@ -58,7 +70,6 @@ jobs:
     test-php81-laravel8:
         name: Test on PHP 8.1 and Laravel 8
         runs-on: ubuntu-20.04
-
         steps:
             - uses: shivammathur/setup-php@v2
               with:
@@ -74,7 +85,6 @@ jobs:
     test-php80-laravel8:
         name: Test on PHP 8.0 and Laravel 8
         runs-on: ubuntu-20.04
-
         steps:
             - uses: shivammathur/setup-php@v2
               with:

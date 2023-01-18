@@ -112,6 +112,15 @@ $model->moveStep(-1); // moves the model 1 place up
 $model->moveStep(1); // moves the model 1 place down
 ```
 
+#### Set new order
+
+Sets a new order for the specified ids.
+
+```php
+Model::setNewOrder([1, 2, 3]); // sets sequencial order on models with ids 1, 2 and 3 starting from position 1
+Model::setNewOrder([1, 2, 3], 5); // sets sequencial order on models with ids 1, 2 and 3 starting from position 5
+```
+
 ### Querying
 
 #### `ordered($order = 'asc'): \Illuminate\Database\Eloquent\Builder`

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 trait Positionable
 {
-    use Concerns\Moves, Concerns\Queries, Concerns\Swaps;
+    use Concerns\Moves, Concerns\Queries, Concerns\SetsNewOrder, Concerns\Swaps;
 
     /**
      * Boot the trait.

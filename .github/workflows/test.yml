@@ -7,17 +7,51 @@ on:
         branches: ["*"]
 
 jobs:
+    test-php82-laravel9:
+        name: Test on PHP 8.2 and Laravel 8
+        runs-on: ubuntu-20.04
+
+        steps:
+            - uses: shivammathur/setup-php@v2
+              with:
+                  php-version: "8.2"
+            - uses: actions/checkout@v2
+            - name: Install Dependencies
+              run: composer install --ignore-platform-reqs -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+            - name: Upgrade Laravel to v9
+              run: composer require --dev --with-all-dependencies laravel/laravel "^9.0.0"
+            - name: Execute tests
+              run: composer test
+
+    test-php82-laravel8:
+        name: Test on PHP 8.2 and Laravel 8
+        runs-on: ubuntu-20.04
+
+        steps:
+            - uses: shivammathur/setup-php@v2
+              with:
+                  php-version: "8.2"
+            - uses: actions/checkout@v2
+            - name: Install Dependencies
+              run: composer install --ignore-platform-reqs -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+            - name: Downgrade Laravel to v8
+              run: composer require --dev --with-all-dependencies laravel/laravel "^8.0.0"
+            - name: Execute tests
+              run: composer test
+
     test-php81-laravel8:
         name: Test on PHP 8.1 and Laravel 8
         runs-on: ubuntu-20.04
 
         steps:
-            - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+            - uses: shivammathur/setup-php@v2
               with:
                   php-version: "8.1"
             - uses: actions/checkout@v2
             - name: Install Dependencies
               run: composer install --ignore-platform-reqs -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+            - name: Downgrade Laravel to v8
+              run: composer require --dev --with-all-dependencies laravel/laravel "^8.0.0"
             - name: Execute tests
               run: composer test
 
@@ -28,12 +62,14 @@ jobs:
         runs-on: ubuntu-20.04
 
         steps:
-            - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+            - uses: shivammathur/setup-php@v2
               with:
                   php-version: "8.0"
             - uses: actions/checkout@v2
             - name: Install Dependencies
               run: composer install --ignore-platform-reqs -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+            - name: Downgrade Laravel to v8
+              run: composer require --dev --with-all-dependencies laravel/laravel "^8.0.0"
             - name: Execute tests
               run: composer test
 
@@ -42,7 +78,7 @@ jobs:
         runs-on: ubuntu-20.04
 
         steps:
-            - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+            - uses: shivammathur/setup-php@v2
               with:
                   php-version: "8.0"
             - uses: actions/checkout@v2
@@ -58,7 +94,7 @@ jobs:
         runs-on: ubuntu-20.04
 
         steps:
-            - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+            - uses: shivammathur/setup-php@v2
               with:
                   php-version: "8.0"
             - uses: actions/checkout@v2
@@ -74,7 +110,7 @@ jobs:
         runs-on: ubuntu-20.04
 
         steps:
-            - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+            - uses: shivammathur/setup-php@v2
               with:
                   php-version: "7.4"
             - uses: actions/checkout@v2
@@ -88,7 +124,7 @@ jobs:
         runs-on: ubuntu-20.04
 
         steps:
-            - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+            - uses: shivammathur/setup-php@v2
               with:
                   php-version: "7.4"
             - uses: actions/checkout@v2
@@ -104,7 +140,7 @@ jobs:
         runs-on: ubuntu-20.04
 
         steps:
-            - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+            - uses: shivammathur/setup-php@v2
               with:
                   php-version: "7.4"
             - uses: actions/checkout@v2
@@ -120,7 +156,7 @@ jobs:
         runs-on: ubuntu-20.04
 
         steps:
-            - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+            - uses: shivammathur/setup-php@v2
               with:
                   php-version: "7.3"
             - uses: actions/checkout@v2
@@ -134,7 +170,7 @@ jobs:
         runs-on: ubuntu-20.04
 
         steps:
-            - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+            - uses: shivammathur/setup-php@v2
               with:
                   php-version: "7.3"
             - uses: actions/checkout@v2
@@ -150,7 +186,7 @@ jobs:
         runs-on: ubuntu-20.04
 
         steps:
-            - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+            - uses: shivammathur/setup-php@v2
               with:
                   php-version: "7.3"
             - uses: actions/checkout@v2

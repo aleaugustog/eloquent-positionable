@@ -12,7 +12,7 @@ This is a zero-config package that provides a trait to handle positioning/sortin
 
 ## Compatibility
 
-**PHP >= 7.3** and **Laravel >= 6.0**.
+**PHP >= 8.0** and **Laravel >= 8.0**.
 
 ## Installation
 
@@ -112,7 +112,7 @@ $model->moveStep(-1); // moves the model 1 place up
 $model->moveStep(1); // moves the model 1 place down
 ```
 
-#### Set new order
+#### `setNewOrder(array $ids, int $startPosition = 1, ?string $primaryKeyColumn = null)`
 
 Sets a new order for the specified ids.
 

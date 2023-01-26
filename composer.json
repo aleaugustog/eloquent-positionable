@@ -4,11 +4,11 @@
     "type": "library",
     "require": {
         "php": "^8.0",
-        "illuminate/database": ">=6.0",
-        "illuminate/support": ">=6.0"
+        "illuminate/database": ">=8.0",
+        "illuminate/support": ">=8.0"
     },
     "require-dev": {
-        "laravel/laravel": ">=6.0",
+        "laravel/laravel": ">=8.0",
         "mockery/mockery": "^1.4",
         "phpunit/phpunit": "9.5.27"
     },
